@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.noch.controllers.HomePageController"
+      stylesheets="@../styles/CustomerLogin.css">
+
+    <!-- Hero Section -->
+    <VBox alignment="CENTER" styleClass="brand-section"
+          style="-fx-border-color: transparent transparent black transparent;
+                 -fx-border-width: 0 0 1 0; -fx-padding: 48 0 48 0;">
+        <Label text="NOCH" styleClass="brand-title"/>
+        <Label text="MINIMALIST ESSENTIALS" styleClass="brand-subtitle"/>
+    </VBox>
+
+<!-- Header -->
+    <HBox style="-fx-border-color: transparent transparent black transparent;
+                 -fx-border-width: 0 0 1 0; -fx-padding: 16 48 16 48;"
+          alignment="CENTER_LEFT">
+        <Label text="NOCH"
+               style="-fx-font-size: 28px; -fx-letter-spacing: 4px; -fx-font-weight: bold;"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <HBox spacing="16" alignment="CENTER_RIGHT">
+            <Label fx:id="headerUserLabel"
+                   style="-fx-font-size: 13px; -fx-border-color: black; -fx-border-width: 1;
+                          -fx-padding: 6 12;"/>
+            <Button text="LOGOUT"
+                    styleClass="btn-primary"
+                    onAction="#handleLogout"
+                    style="-fx-padding: 6 16;"/>
+        </HBox>
+    </HBox>
+
+    <!-- Scrollable Product Grid -->
+    <ScrollPane fitToWidth="true" style="-fx-background-color: white; -fx-border-color: transparent;">
+        <VBox>
+            <padding><Insets top="32" right="32" bottom="32" left="32"/></padding>
+
+            <!-- Product Grid using GridPane -->
+            <GridPane fx:id="productGrid" hgap="24" vgap="24">
+                <columnConstraints>
+                    <ColumnConstraints percentWidth="33.33"/>
+                    <ColumnConstraints percentWidth="33.33"/>
+                    <ColumnConstraints percentWidth="33.33"/>
+                </columnConstraints>
+            </GridPane>
+
+        </VBox>
+    </ScrollPane>
+</VBox>

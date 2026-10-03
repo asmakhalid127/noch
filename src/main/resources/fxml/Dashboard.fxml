@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.noch.controllers.AdminDashboardController"
+      stylesheets="@../styles/CustomerLogin.css">
+
+<!-- Header -->
+    <HBox style="-fx-border-color: transparent transparent black transparent;
+                 -fx-border-width: 0 0 1 0; -fx-padding: 16 48 16 48;"
+          alignment="CENTER_LEFT">
+        <Label text="NOCH"
+               style="-fx-font-size: 28px; -fx-letter-spacing: 4px; -fx-font-weight: bold;"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <HBox spacing="16" alignment="CENTER_RIGHT">
+            <Label fx:id="headerUserLabel"
+                   style="-fx-font-size: 13px; -fx-border-color: black; -fx-border-width: 1;
+                          -fx-padding: 6 12;"/>
+            <Button text="LOGOUT"
+                    styleClass="btn-primary"
+                    onAction="#handleLogout"
+                    style="-fx-padding: 6 16;"/>
+        </HBox>
+    </HBox>
+
+    <ScrollPane fitToWidth="true"
+                style="-fx-background-color: white; -fx-border-color: transparent;">
+        <VBox spacing="32">
+            <padding><Insets top="32" right="48" bottom="48" left="48"/></padding>
+
+            <!-- Header -->
+            <VBox spacing="8">
+                <HBox spacing="12" alignment="CENTER_LEFT">
+                    <Label text="ADMIN DASHBOARD"
+                           style="-fx-font-size: 26px; -fx-font-weight: bold; -fx-letter-spacing: 4px;"/>
+                </HBox>
+                <Label text="Manage products and moderate reviews. Click on any product to view and moderate its reviews."
+                       style="-fx-font-size: 13px; -fx-text-fill: #6b7280;" wrapText="true"/>
+            </VBox>
+
+            <!-- Stats Row -->
+            <HBox spacing="16">
+                <VBox styleClass="login-box" HBox.hgrow="ALWAYS" spacing="8">
+                    <padding><Insets top="24" right="24" bottom="24" left="24"/></padding>
+                    <Label fx:id="totalProductsLabel"
+                           style="-fx-font-size: 28px; -fx-font-weight: bold;"/>
+                    <Label text="TOTAL PRODUCTS"
+                           style="-fx-font-size: 11px; -fx-text-fill: #6b7280; -fx-letter-spacing: 2px;"/>
+                </VBox>
+                <VBox styleClass="login-box" HBox.hgrow="ALWAYS" spacing="8">
+                    <padding><Insets top="24" right="24" bottom="24" left="24"/></padding>
+                    <Label fx:id="totalReviewsLabel"
+                           style="-fx-font-size: 28px; -fx-font-weight: bold;"/>
+                    <Label text="TOTAL REVIEWS"
+                           style="-fx-font-size: 11px; -fx-text-fill: #6b7280; -fx-letter-spacing: 2px;"/>
+                </VBox>
+                <VBox style="-fx-border-color: black; -fx-border-width: 1; -fx-background-color: #f9fafb;"
+                      HBox.hgrow="ALWAYS" spacing="8">
+                    <padding><Insets top="24" right="24" bottom="24" left="24"/></padding>
+                    <Label fx:id="flaggedReviewsLabel"
+                           style="-fx-font-size: 28px; -fx-font-weight: bold;"/>
+                    <Label text="FLAGGED REVIEWS"
+                           style="-fx-font-size: 11px; -fx-text-fill: #6b7280; -fx-letter-spacing: 2px;"/>
+                </VBox>
+            </HBox>
+
+            <!-- Top Reviews Section -->
+            <VBox spacing="16">
+                <Label text="TOP CUSTOMER REVIEWS"
+                       style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-letter-spacing: 3px;"/>
+                <HBox fx:id="topReviewsBox" spacing="16"/>
+            </VBox>
+
+            <!-- Search -->
+            <TextField fx:id="searchField"
+                       promptText="Search products by name or description..."
+                       styleClass="input-field"
+                       onKeyReleased="#handleSearch"/>
+
+            <!-- Products Grid -->
+            <VBox spacing="16">
+                <Label text="PRODUCTS"
+                       style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-letter-spacing: 3px;"/>
+                <GridPane fx:id="productsGrid" hgap="16" vgap="16">
+                    <columnConstraints>
+                        <ColumnConstraints percentWidth="33.33"/>
+                        <ColumnConstraints percentWidth="33.33"/>
+                        <ColumnConstraints percentWidth="33.33"/>
+                    </columnConstraints>
+                </GridPane>
+                <Label fx:id="noResultsLabel"
+                       text="No products match your search."
+                       style="-fx-font-size: 13px; -fx-text-fill: #6b7280; -fx-padding: 32;"
+                       visible="false" managed="false"/>
+            </VBox>
+
+        </VBox>
+    </ScrollPane>
+</VBox>

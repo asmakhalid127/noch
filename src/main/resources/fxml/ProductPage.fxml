@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.noch.controllers.ProductPageController"
+      stylesheets="@../styles/CustomerLogin.css">
+
+    <ScrollPane fitToWidth="true"
+                style="-fx-background-color: white; -fx-border-color: transparent;">
+        <VBox spacing="0">
+            <padding><Insets top="32" right="48" bottom="48" left="48"/></padding>
+
+            <!-- Back link -->
+            <Hyperlink text="← BACK TO ALL PRODUCTS"
+                       styleClass="admin-link"
+                       onAction="#goBack"
+                       style="-fx-padding: 0 0 24 0;"/>
+
+            <!-- Product Section -->
+            <HBox spacing="48" style="-fx-padding: 0 0 48 0;">
+
+                <VBox prefWidth="480" prefHeight="480"
+                      alignment="CENTER"
+                      style="-fx-border-color: black; -fx-border-width: 1; -fx-background-color: #f9fafb;">
+                    <Label fx:id="imageLabel"
+                           style="-fx-font-size: 80px; -fx-text-fill: #d1d5db;"/>
+                </VBox>
+
+                <VBox spacing="16" HBox.hgrow="ALWAYS">
+                    <Label fx:id="productName"
+                           style="-fx-font-size: 24px; -fx-letter-spacing: 3px; -fx-font-weight: bold;"/>
+                    <Label fx:id="productPrice"
+                           style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+                    <HBox fx:id="ratingBox" spacing="8" alignment="CENTER_LEFT"
+                          style="-fx-border-color: transparent transparent #d1d5db transparent;
+                                 -fx-border-width: 0 0 1 0; -fx-padding: 0 0 16 0;"
+                          visible="false" managed="false">
+                        <HBox fx:id="starsBox" spacing="2"/>
+                        <Label fx:id="ratingLabel"
+                               style="-fx-font-size: 13px; -fx-text-fill: #6b7280;"/>
+                    </HBox>
+                    <Label fx:id="productDescription"
+                           wrapText="true"
+                           style="-fx-font-size: 14px; -fx-text-fill: #6b7280;"/>
+                    <VBox spacing="8" style="-fx-padding: 24 0 0 0;">
+                        <Button fx:id="addReviewBtn"
+                                text="ADD REVIEW"
+                                maxWidth="Infinity"
+                                styleClass="btn-primary"
+                                onAction="#handleAddReview"/>
+                        <Label fx:id="reviewPermissionMsg"
+                               wrapText="true"
+                               style="-fx-font-size: 12px; -fx-text-fill: #6b7280;"
+                               visible="false" managed="false"/>
+                    </VBox>
+                </VBox>
+            </HBox>
+
+            <!-- Reviews Section -->
+            <VBox spacing="16">
+                <Label text="CUSTOMER REVIEWS"
+                       style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-letter-spacing: 3px;
+                              -fx-border-color: transparent transparent black transparent;
+                              -fx-border-width: 0 0 1 0; -fx-padding: 0 0 12 0;"/>
+                <HBox fx:id="topReviewBox"/>
+                <TextField fx:id="reviewSearchField"
+                           promptText="Search reviews..."
+                           styleClass="input-field"
+                           onKeyReleased="#handleSearch"/>
+                <HBox spacing="16">
+                    <VBox spacing="6" HBox.hgrow="ALWAYS">
+                        <Label text="SORT BY" styleClass="field-label"/>
+                        <ComboBox fx:id="sortCombo" maxWidth="Infinity"/>
+                    </VBox>
+                    <VBox spacing="6" HBox.hgrow="ALWAYS">
+                        <Label text="FILTER BY RATING" styleClass="field-label"/>
+                        <ComboBox fx:id="filterCombo" maxWidth="Infinity"/>
+                    </VBox>
+                </HBox>
+                <VBox fx:id="reviewsList" spacing="16"/>
+            </VBox>
+
+        </VBox>
+    </ScrollPane>
+
+</VBox>

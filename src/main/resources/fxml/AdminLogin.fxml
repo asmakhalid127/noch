@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.noch.controllers.AdminLoginController"
+      alignment="CENTER"
+      stylesheets="@../styles/CustomerLogin.css">
+
+    <VBox alignment="CENTER" maxWidth="420">
+        <padding><Insets top="48" right="32" bottom="48" left="32"/></padding>
+
+        <!-- Brand -->
+        <VBox alignment="CENTER" styleClass="brand-section">
+            <Label text="NOCH" styleClass="brand-title"/>
+            <Label text="MINIMALIST ESSENTIALS" styleClass="brand-subtitle"/>
+        </VBox>
+
+        <!-- Admin Login Box -->
+        <VBox styleClass="login-box" style="-fx-background-color: #f9fafb;">
+            <padding><Insets top="32" right="32" bottom="32" left="32"/></padding>
+            <spacing>24</spacing>
+
+            <Label text="ADMIN LOGIN" styleClass="login-heading" 
+       alignment="CENTER" maxWidth="Infinity"/>
+
+            <!-- Admin Email -->
+            <VBox spacing="8">
+                <Label text="ADMIN EMAIL" styleClass="field-label"/>
+                <TextField fx:id="emailField"
+                           promptText="admin@noch.com"
+                           styleClass="input-field"/>
+            </VBox>
+
+            <!-- Admin Password -->
+            <VBox spacing="8">
+                <Label text="ADMIN PASSWORD" styleClass="field-label"/>
+                <PasswordField fx:id="passwordField"
+                               promptText="••••••••"
+                               styleClass="input-field"/>
+            </VBox>
+
+            <!-- Error label -->
+            <Label fx:id="errorLabel"
+                   styleClass="error-label"
+                   wrapText="true"
+                   managed="false"
+                   visible="false"/>
+
+            <!-- Login button -->
+            <Button text="LOGIN AS ADMIN"
+                    maxWidth="Infinity"
+                    styleClass="btn-primary"
+                    onAction="#handleLogin"/>
+
+            <!-- Auto-fill button -->
+            <Button text="AUTO-FILL CREDENTIALS"
+                    maxWidth="Infinity"
+                    styleClass="btn-secondary"
+                    onAction="#handleAutoFill"/>
+
+            <!-- Footer -->
+            <VBox alignment="CENTER" spacing="8" styleClass="footer-section">
+                <Label text="Admin access required for moderation dashboard."
+                       styleClass="footer-text" wrapText="true" textAlignment="CENTER"/>
+                <Label text="Admins can flag, edit, or delete reviews but cannot create them."
+                       styleClass="footer-text" wrapText="true" textAlignment="CENTER"/>
+                <Hyperlink text="← Customer Login"
+                           styleClass="admin-link"
+                           onAction="#goToCustomerLogin"/>
+            </VBox>
+
+        </VBox>
+    </VBox>
+</VBox>

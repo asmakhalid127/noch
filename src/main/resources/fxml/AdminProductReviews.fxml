@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.noch.controllers.AdminProductReviewsController"
+      stylesheets="@../styles/CustomerLogin.css">
+
+    <ScrollPane fitToWidth="true"
+                style="-fx-background-color: white; -fx-border-color: transparent;">
+        <VBox spacing="24">
+            <padding><Insets top="32" right="48" bottom="48" left="48"/></padding>
+
+            <Hyperlink text="← BACK TO PRODUCTS"
+                       styleClass="admin-link"
+                       onAction="#goBack"/>
+
+            <HBox spacing="24"
+                  style="-fx-border-color: transparent transparent #d1d5db transparent;
+                         -fx-border-width: 0 0 1 0; -fx-padding: 0 0 24 0;">
+                <VBox prefWidth="96" prefHeight="96" alignment="CENTER"
+                      style="-fx-border-color: black; -fx-border-width: 1; -fx-background-color: #f9fafb;">
+                    <Label fx:id="productImageLabel"
+                           style="-fx-font-size: 36px; -fx-text-fill: #d1d5db;"/>
+                </VBox>
+                <VBox spacing="6" HBox.hgrow="ALWAYS">
+                    <Label fx:id="productNameLabel"
+                           style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-letter-spacing: 3px;"/>
+                    <Label fx:id="productPriceLabel"
+                           style="-fx-font-size: 16px;"/>
+                    <HBox spacing="8" alignment="CENTER_LEFT">
+                        <HBox fx:id="productStarsBox" spacing="2"/>
+                        <Label fx:id="productRatingLabel"
+                               style="-fx-font-size: 13px; -fx-text-fill: #6b7280;"/>
+                    </HBox>
+                    <Label fx:id="productDescLabel"
+                           wrapText="true"
+                           style="-fx-font-size: 13px; -fx-text-fill: #6b7280;"/>
+                </VBox>
+            </HBox>
+
+            <HBox spacing="16">
+                <VBox styleClass="login-box" HBox.hgrow="ALWAYS" spacing="8">
+                    <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+                    <Label fx:id="totalReviewsLabel"
+                           style="-fx-font-size: 26px; -fx-font-weight: bold;"/>
+                    <Label text="TOTAL REVIEWS"
+                           style="-fx-font-size: 11px; -fx-text-fill: #6b7280; -fx-letter-spacing: 2px;"/>
+                </VBox>
+                <VBox style="-fx-border-color: black; -fx-border-width: 1; -fx-background-color: #f9fafb;"
+                      HBox.hgrow="ALWAYS" spacing="8">
+                    <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+                    <Label fx:id="flaggedCountLabel"
+                           style="-fx-font-size: 26px; -fx-font-weight: bold;"/>
+                    <Label text="FLAGGED REVIEWS"
+                           style="-fx-font-size: 11px; -fx-text-fill: #6b7280; -fx-letter-spacing: 2px;"/>
+                </VBox>
+                <VBox styleClass="login-box" HBox.hgrow="ALWAYS" spacing="8">
+                    <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+                    <Label fx:id="recentCountLabel"
+                           style="-fx-font-size: 26px; -fx-font-weight: bold;"/>
+                    <Label text="LAST 30 DAYS"
+                           style="-fx-font-size: 11px; -fx-text-fill: #6b7280; -fx-letter-spacing: 2px;"/>
+                </VBox>
+            </HBox>
+
+            <FlowPane fx:id="filterRow" hgap="8" vgap="8"/>
+
+            <TextField fx:id="searchField"
+                       promptText="Search reviews by content or customer..."
+                       styleClass="input-field"
+                       onKeyReleased="#handleSearch"/>
+
+            <VBox fx:id="reviewsList" spacing="12"/>
+
+        </VBox>
+    </ScrollPane>
+</VBox>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.noch.controllers.CustomerLoginController"
+      alignment="CENTER"
+      styleClass="root-container"
+      stylesheets="@../styles/CustomerLogin.css">
+
+    <VBox alignment="CENTER" maxWidth="420" styleClass="card">
+        <padding><Insets top="48" right="32" bottom="48" left="32"/></padding>
+
+        <VBox alignment="CENTER" styleClass="brand-section">
+            <Label text="NOCH" styleClass="brand-title"/>
+            <Label text="MINIMALIST ESSENTIALS" styleClass="brand-subtitle"/>
+        </VBox>
+
+        <VBox styleClass="login-box">
+            <padding><Insets top="32" right="32" bottom="32" left="32"/></padding>
+            <spacing>24</spacing>
+
+            <Label text="CUSTOMER LOGIN" styleClass="login-heading"
+                   alignment="CENTER" maxWidth="Infinity"/>
+
+            <VBox spacing="8">
+                <Label text="EMAIL" styleClass="field-label"/>
+                <TextField fx:id="emailField"
+                           promptText="user@email.com"
+                           styleClass="input-field"/>
+            </VBox>
+
+            <VBox spacing="8">
+                <Label text="PASSWORD" styleClass="field-label"/>
+                <PasswordField fx:id="passwordField"
+                               promptText="••••••••"
+                               styleClass="input-field"/>
+            </VBox>
+
+            <Label fx:id="errorLabel"
+                   styleClass="error-label"
+                   wrapText="true"
+                   managed="false"
+                   visible="false"/>
+
+            <Button text="LOGIN AS CUSTOMER"
+                    maxWidth="Infinity"
+                    styleClass="btn-primary"
+                    onAction="#handleLogin"/>
+
+            <Button text="AUTO-FILL CREDENTIALS"
+                    maxWidth="Infinity"
+                    styleClass="btn-secondary"
+                    onAction="#handleAutoFill"/>
+
+            <VBox alignment="CENTER" spacing="8" styleClass="footer-section">
+                <Label text="Login is required to access the store."
+                       styleClass="footer-text"/>
+                <Label text="Only verified customers who purchased a product can review it."
+                       styleClass="footer-text" wrapText="true" textAlignment="CENTER"/>
+                <Hyperlink text="Admin Login →"
+                           styleClass="admin-link"
+                           onAction="#goToAdminLogin"/>
+            </VBox>
+        </VBox>
+    </VBox>
+</VBox>
